@@ -124,7 +124,6 @@ class ST_graphs:
         """
         midpoint = len(prop.columns)/2
         midpoint = round(midpoint)
-        # colo = self.color
         ratios, g, axes = [], [], []
         for i in range(len(prop.columns)):
             ratios.append(1)
