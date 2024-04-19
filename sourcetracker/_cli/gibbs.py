@@ -32,7 +32,7 @@ from sourcetracker._gibbs_defaults import (DESC_TBL, DESC_MAP, DESC_OUT,
                                            DESC_SRS2, DESC_CAT, DESC_DIA,
                                            DESC_LIM, DESC_STBAR, DESC_HTM,
                                            DESC_PHTM, DESC_TTL, DESC_HCOL,
-                                           DESC_UKN, DESC_TRA, DESC_BCOL, 
+                                           DESC_UKN, DESC_TRA, DESC_BCOL,
                                            DESC_FLBR)
 
 # import default values
