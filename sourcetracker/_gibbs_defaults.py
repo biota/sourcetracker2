@@ -93,3 +93,36 @@ OUT_PFAM = ('The mapping file to the per feature table for each '
             'sink (or source if `--loo is passed). '
             'This feature table contains the specific '
             ' of each fractional contribution.')
+DESC_DIA = ('Activate diagnostics function which visualizes the '
+            'deviation of each SourceTracker run, requires'
+            'at least 2 restarts. Default is False.')
+DESC_LIM = ('Minimum deviation limit for display. Default value'
+            'of 0.05')
+DESC_STBAR = ('Activates stacked bar plot visualization.'
+              'Default is False.')
+DESC_HTM = ('Deactivates Heatmap plot. Default is True.')
+DESC_PHTM = ('Activates Paired heatmap visualization. Paired'
+             'heatmap intends to visualize pairings for sourcetracker'
+             'to identify these pairings. Non random pairings are '
+             'identified by the highest result in each column. '
+             'For each correct pairing, the resulting proportion '
+             'should be calculated against a binomial distribution '
+             'with a p value calculated against random distribution '
+             'with a correct proportion of 1/n at random.'
+             'This can be used for groupings such as convergent '
+             'microbiomes or organ transfer similarities as a few'
+             ' examples.')
+DESC_TTL = ('Title input. String format')
+DESC_HCOL = ('Heatmap coloring. Coloring pattern for default and'
+             ' paired heatmap. Default is viridis, other options in'
+             ' plot.py.')
+DESC_UKN = ('Remove unknowns from heatmap or stacked bar plots.'
+            'Will redistribute value proportionally to each column.')
+DESC_TRA = ('Transpose Heatmap plots.Flips x and y axis. Default is'
+             ' False.')
+DESC_BCOL = ('Coloring for stacked bar plot. Default is matplotlib'
+             ' default. List format should be used.'
+             'An example of this would be [red,green,blue] with'
+             ' each color in a string format.')
+DESC_FLBR = ('Transpose bar plot. Flips x and y axis. Default is'
+             ' False.')
