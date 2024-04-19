@@ -119,7 +119,7 @@ DESC_HCOL = ('Heatmap coloring. Coloring pattern for default and'
 DESC_UKN = ('Remove unknowns from heatmap or stacked bar plots.'
             'Will redistribute value proportionally to each column.')
 DESC_TRA = ('Transpose Heatmap plots.Flips x and y axis. Default is'
-             ' False.')
+            ' False.')
 DESC_BCOL = ('Coloring for stacked bar plot. Default is matplotlib'
              ' default. List format should be used.'
              'An example of this would be [red,green,blue] with'
