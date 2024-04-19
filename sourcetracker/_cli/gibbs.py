@@ -29,7 +29,11 @@ from sourcetracker._gibbs_defaults import (DESC_TBL, DESC_MAP, DESC_OUT,
                                            DESC_RAF2, DESC_RST, DESC_DRW,
                                            DESC_BRN, DESC_DLY, DESC_PFA,
                                            DESC_RPL, DESC_SNK, DESC_SRS,
-                                           DESC_SRS2, DESC_CAT)
+                                           DESC_SRS2, DESC_CAT, DESC_DIA,
+                                           DESC_LIM, DESC_STBAR, DESC_HTM,
+                                           DESC_PHTM, DESC_TTL, DESC_HCOL,
+                                           DESC_UKN, DESC_TRA, DESC_BCOL, 
+                                           DESC_FLBR)
 
 # import default values
 from sourcetracker._gibbs_defaults import (DEFAULT_ALPH1, DEFAULT_ALPH2,
@@ -120,28 +124,28 @@ from sourcetracker._gibbs_defaults import (DEFAULT_ALPH1, DEFAULT_ALPH2,
               help=DESC_CAT)
 # Stats functions for diagnostics
 @click.option('--diagnostics', required=False, default=False, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_DIA)
 @click.option('--limit', required=False, default=0.05, type=click.FLOAT,
-              show_default=True)
+              show_default=True, help=DESC_LIM)
 # (added options for graphical ouput and varying stats functions)
 @click.option('--stacked_bar', required=False, default=False, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_STBAR)
 @click.option('--heatmap', required=False, default=True, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_HTM)
 @click.option('--paired_heatmap', required=False, default=False, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_PHTM)
 @click.option('--title', required=False, default='Mixing Proportions',
-              type=click.STRING, show_default=True)
+              type=click.STRING, show_default=True, help=DESC_TTL)
 @click.option('--heatmap_color', required=False, default='viridis',
-              type=click.STRING, show_default=True)
+              type=click.STRING, show_default=True, help=DESC_HCOL)
 @click.option('--unknowns', required=False, default=True, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_UKN)
 @click.option('--transpose', required=False, default=False, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_TRA)
 @click.option('--bar_color', required=False, default="", type=click.STRING,
-              show_default=True)
+              show_default=True, help=DESC_BCOL)
 @click.option('--flip_bar', required=False, default=False, is_flag=True,
-              show_default=True)
+              show_default=True, help=DESC_FLBR)
 def gibbs(table_fp: Table,
           mapping_fp: pd.DataFrame,
           output_dir: str,
