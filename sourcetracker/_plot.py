@@ -227,7 +227,7 @@ class ST_graphs:
         plt.xticks(rotation=45, ha='right')
         if unknowns and flipped:
             plt.savefig(os.path.join(self.file,
-                                     self.out_name + "_flipped_stacked_bar.png"))
+                                     self.out_name + "_flip_stacked_bar.png"))
         elif unknowns:
             plt.savefig(os.path.join(self.file,
                                      self.out_name + "_stacked_bar.png"))
