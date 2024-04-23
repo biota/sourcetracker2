@@ -217,20 +217,10 @@ def gibbs(table_fp: Table,
     # Plot contributions.
     graphs = ST_graphs(mpm, output_dir, title=title, color=heatmap_color)
     if heatmap:
-        graphs.ST_heatmap()
-        if not unknowns:
-            graphs.ST_heatmap(unknowns=False)
+        graphs.ST_heatmap(unknowns=unknowns)
     if paired_heatmap:
-        graphs.ST_paired_heatmap()
-        if not unknowns:
-            graphs.ST_paired_heatmap(unknowns=False)
-            graphs.ST_paired_heatmap(unknowns=False, normalized=True)
-        if transpose:
-            graphs.ST_paired_heatmap(unknowns=False, normalized=True,
-                                     transpose=True)
-            graphs.ST_paired_heatmap(normalized=True,
-                                     transpose=True)
-            graphs.ST_paired_heatmap(transpose=True)
+        graphs.ST_paired_heatmap(unknowns=unknowns, normalized=transpose,
+                                 transpose=transpose)
     if stacked_bar:
         graphs.ST_Stacked_bar(coloring=color_list, flipped=flip_bar)
         if not unknowns:
