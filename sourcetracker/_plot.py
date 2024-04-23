@@ -34,7 +34,7 @@ class ST_graphs:
         fig, ax = plt.subplots(figsize=((prop.shape[1] * 3 / 4)+4,
                                         (prop.shape[0] * 3 / 4)+4))
         sns.heatmap(prop, vmin=0.0, vmax=vmax, cmap=self.color,
-                    annot=annot, linewidths=.5, ax=ax)  # ,vmax=1.0
+                    annot=annot, linewidths=.5, ax=ax)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
         ax.set_title(self.title)
@@ -200,10 +200,8 @@ class ST_graphs:
             y_lab = y_lab_flip
             x_lab = x_lab_flip
         if not unknowns:
-            # prop = prop.set_index('SampleID')
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
-            # prop = prop.reset_index()
         """
         # '#1f77b4'Blue, '#ff7f0e'Orange, '#2ca02c'Green, '#d62728'Red,
         # '#9467bd'Purple, '#8c564b'Brown, '#e377c2'Pink, '#7f7f7f'Grey,
@@ -221,7 +219,6 @@ class ST_graphs:
             prop.plot(kind='bar', x=prop.columns[0], stacked=True,
                       figsize=((prop.shape[1] * 3 / 4)+4,
                       (prop.shape[0] * 3 / 4)+4))
-        # plt.legend(loc=(1.05, 0.5), labelspacing=-3, frameon=True)
         plt.xlabel(x_lab)
         plt.ylabel(y_lab)
         plt.title(self.title)
@@ -244,10 +241,8 @@ class ST_graphs:
                y_lab="Source Proportion", coloring=[]):
         prop = self.mpm
         if not unknowns:
-            # prop = prop.set_index('SampleID')
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
-            # prop = prop.reset_index()
 
         """
         # '#1f77b4'Blue, '#ff7f0e'Orange, '#2ca02c'Green, '#d62728'Red,
