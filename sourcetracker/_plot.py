@@ -20,6 +20,7 @@ class ST_graphs:
         self.mpm = mpm.T
         self.title = title
         self.color = color
+        self.out_name = title.replace(" ", "_")
 
     def ST_heatmap(self, unknowns=True, annot=True,
                    xlabel='Sources', ylabel='Sinks', vmax=1.0):
@@ -41,10 +42,10 @@ class ST_graphs:
         plt.xticks(rotation=45, ha='right')
         if unknowns:
             plt.savefig(os.path.join(self.file,
-                                     self.title + "_heatmap.png"))
+                                     self.out_name + "_heatmap.png"))
         else:
             plt.savefig(os.path.join(self.file,
-                                     self.title + "_heatmap_nounknown.png"))
+                                     self.out_name + "_heatmap_nounknown.png"))
 
     def ST_paired_heatmap(self, normalized=False, unknowns=True,
                           transpose=False, annot=True, ylabel='Sources'):
@@ -175,20 +176,20 @@ class ST_graphs:
             if unknowns:
                 add_line = tra + "_pairedheatmap_normalized.png"
                 plt.savefig(os.path.join(self.file,
-                                         self.title + add_line))
+                                         self.out_name + add_line))
             else:
                 add_line = tra + "_pairedheatmap_nounknown_normalized.png"
                 plt.savefig(os.path.join(self.file,
-                                         self.title + add_line))
+                                         self.out_name + add_line))
         else:
             if unknowns:
                 add_line = tra + "_pairedheatmap.png"
                 plt.savefig(os.path.join(self.file,
-                                         self.title + add_line))
+                                         self.out_name + add_line))
             else:
                 add_line = tra + "_pairedheatmap_nounknowns.png"
                 plt.savefig(os.path.join(self.file,
-                                         self.title + add_line))
+                                         self.out_name + add_line))
 
     def ST_Stacked_bar(self, unknowns=True, x_lab="Sink",
                        y_lab="Source Proportion", coloring=[], flipped=False):
@@ -226,16 +227,16 @@ class ST_graphs:
         plt.xticks(rotation=45, ha='right')
         if unknowns and flipped:
             plt.savefig(os.path.join(self.file,
-                                     self.title + "_flipped_stacked_bar.png"))
+                                     self.out_name + "_flipped_stacked_bar.png"))
         elif unknowns:
             plt.savefig(os.path.join(self.file,
-                                     self.title + "_stacked_bar.png"))
+                                     self.out_name + "_stacked_bar.png"))
         else:
             add_line = "_stacked_bar_nounknowns.png"
             if flipped:
                 add_line = "flipped_stacked_bar_nounknowns.png"
             plt.savefig(os.path.join(self.file,
-                                     self.title + add_line))
+                                     self.out_name + add_line))
 
     def ST_bar(self, unknowns=True, x_lab="Sink",
                y_lab="Source Proportion", coloring=[]):
@@ -269,7 +270,7 @@ class ST_graphs:
         plt.xticks(rotation=45, ha='right')
         if unknowns:
             plt.savefig(os.path.join(self.file,
-                        self.title + "_bar.png"))
+                        self.out_name + "_bar.png"))
         else:
             plt.savefig(os.path.join(self.file,
-                        self.title + "_bar_nounknowns.png"))
+                        self.out_name + "_bar_nounknowns.png"))
