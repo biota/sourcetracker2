@@ -48,7 +48,8 @@ class ST_graphs:
                                      self.out_name + "_heatmap_nounknown.png"))
 
     def ST_paired_heatmap(self, normalized=False, unknowns=True,
-                          transpose=False, annot=True, ylabel='Sources'):
+                          transpose=False, annot=True, ylabel='Sources',
+                          heat_ratio=0.08):
         """
         normalized=True means that you wish to normalize
         each column to equal to 1 to represent the likelihood
@@ -90,7 +91,9 @@ class ST_graphs:
         https://matplotlib.org/stable/tutorials/colors/colormaps.html
         <-and here
 
-        cmap=plt.cm.viridis "icefire" "mako" "magma" "coolwarm"
+        "viridis" "icefire" "vlag" "Spectral" "mako" "magma"
+        "coolwarm" "rocket" "flare" "crest"
+        "_r" reverses all of these
 
         vmax and min will show the maximum and minimum for the
         heat map settings. vmax=max is default and what we use here.
@@ -100,7 +103,6 @@ class ST_graphs:
         The reason I do not in this case is that these ranges
         are not particularly helpful to distinguishing the
         successful matches to each other.
-        vmin=0, vmax=1.0,
         """
         prop = self.mpm
         if not unknowns:
@@ -112,17 +114,6 @@ class ST_graphs:
         if transpose:
             prop = prop.T
             tra = "_Transposed"
-
-        """
-        "viridis" "icefire" "vlag" "Spectral" "mako" "magma"
-        "coolwarm" "rocket" "flare" "crest"
-        "_r" reverses all of these
-        https://seaborn.pydata.org/tutorial/color_palettes.html
-        <-more color palattes here
-        https://matplotlib.org/stable/tutorials/colors/colormaps.html
-        <-and here
-        vmin=0, vmax=1.0,
-        """
         midpoint = len(prop.columns)/2
         midpoint = round(midpoint)
         ratios, g, axes = [], [], []
@@ -130,7 +121,7 @@ class ST_graphs:
             ratios.append(1)
             axes.append("ax" + str(i))
             g.append("g" + str(i))
-        ratios.append(0.08)
+        ratios.append(heat_ratio)
         axes.append("axcb")
         fig, axes = plt.subplots(1, len(axes),
                                  gridspec_kw={'width_ratios': ratios},
