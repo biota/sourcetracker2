@@ -21,12 +21,42 @@ class ST_graphs:
         self.title = title
         self.color = color
         self.out_name = title.replace(" ", "_")
-
+        """
+        Parameters
+        ----------
+        self.file string
+            output directory name given from input
+        self.mpm dataframe
+            mixing proportion result from gibbs
+        self.title string
+            title
+        self.color string
+            color scheme for heatmaps pulled from matplotlib
+        self.out_name string
+            output name spaces are replaced with _
+        """
     def ST_heatmap(self, unknowns=True, annot=True,
                    xlabel='Sources', ylabel='Sinks', vmax=1.0):
         """
+        Default Heatmap default is true
         Standard heat map altered for custom
         shape and direct png save function
+        Parameters
+        ----------
+        unknowns bool
+            removes unknown column
+        annot bool
+            Defines visual proportions in plot
+        xlabel string
+            x label
+        ylabel string
+            y label
+        vmax float
+            determines the maximum color value of the plot
+        returns
+        --------
+        none
+        outputs a heatmap visualization in a PNG
         """
         prop = self.mpm
         if not unknowns:
@@ -51,46 +81,32 @@ class ST_graphs:
                           transpose=False, annot=True, ylabel='Sources',
                           heat_ratio=0.08):
         """
-        normalized=True means that you wish to normalize
-        each column to equal to 1 to represent the likelihood
-        that each member of the pair can be mapped its'
-        counter out of 1.
-        instead of less than 1. I recommend to do this
-        to get a better idea of the proportion. Also recommend if getting
-        rid of
-        unknowns or transposing the data to see if these improve your plot.
-
-        Unknown=False means to normalize this plot without the unknown column.
-        This can help prevent notably high outliers with
-        high unknowns from letting you misidentify a successful match
-
-        I would recommend running both separately
-        and together in order to eliminate marginal cases.
+        Parameters
+        ----------
+        normalized bool
+            normalize each column to equal to 1 to represent the likelihood
+        unknowns bool
+            removes unknown column
+        transpose bool
+            transpose
+        annot bool
+            Defines visual proportions in plot
+        xlabel string
+            x label
+        ylabel string
+            y label
+        heat ratio float
+            ratio of example bar as compared to main columns.
+            Should be much thinner than main columns
+        returns
+        --------
+        none
+        outputs a heatmap visualization in a PNG defined by each
+        individual column
 
         Any analysis should be done using a bin(n,x)
-        distributions to better give a good idea of these distributions.
 
-        Color=viridis spans from dark purple to yellow through blue and green.
-
-        Magma spans black to white through orange pink and yellow.
-        This is slightly better in the lower to mid ranges
-        and seperating on the lower end of the proportions.
-
-        coolwarm is deep red to deep blue and can be good for
-        either extreme ranges or data sets with an average of 0.
-
-        Icefire is very good for middle ranges as these are
-        darker and will better show them.
-        can be more useful if you are running into a low data
-        issue and are getting extreme values.
-        That said, usually not ideal for these maps.
-
-        more can be found on these sites.
-        https://seaborn.pydata.org/tutorial/color_palettes.html
-        <-more color palattes here
-        https://matplotlib.org/stable/tutorials/colors/colormaps.html
-        <-and here
-
+        Color examples:
         "viridis" "icefire" "vlag" "Spectral" "mako" "magma"
         "coolwarm" "rocket" "flare" "crest"
         "_r" reverses all of these
@@ -184,6 +200,34 @@ class ST_graphs:
 
     def ST_Stacked_bar(self, unknowns=True, x_lab="Sink",
                        y_lab="Source Proportion", coloring=[], flipped=False):
+        """
+        Creates a Stacked bar plot for the user with direct png save function
+        Parameters
+        ----------
+        unknowns bool
+            removes unknown column
+        xlabel string
+            x label
+        ylabel string
+            y label
+        coloring string list
+            string list of colors to encode the bar plot.
+            must have and equal number of colors as sources
+        flipped bool
+            flips x and y axis
+        returns
+        --------
+        none
+        outputs a stacked bar visualization in a PNG
+        
+        color example list
+        
+        '#1f77b4'Blue, '#ff7f0e'Orange, '#2ca02c'Green, '#d62728'Red,
+        '#9467bd'Purple, '#8c564b'Brown, '#e377c2'Pink, '#7f7f7f'Grey,
+        '#bcbd22'Gold, '#17becf'Cyan
+        make sure to use contrasting colors in order better illuminate
+        your data above are some example codes to use
+        """
         prop = self.mpm
         if flipped:
             prop = prop.T
@@ -194,13 +238,6 @@ class ST_graphs:
         if not unknowns:
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
-        """
-        # '#1f77b4'Blue, '#ff7f0e'Orange, '#2ca02c'Green, '#d62728'Red,
-        # '#9467bd'Purple, '#8c564b'Brown, '#e377c2'Pink, '#7f7f7f'Grey,
-        # 'bcbd22'Gold, '#17becf'Cyan
-        # make sure to use contrasting colors in order better illuminate
-        your data above are some example codes to use
-        """
         prop = prop.reset_index()
         if coloring != []:
             prop.plot(kind='bar', x=prop.columns[0], stacked=True,
