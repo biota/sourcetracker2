@@ -219,9 +219,9 @@ class ST_graphs:
         --------
         none
         outputs a stacked bar visualization in a PNG
-        
+
         color example list
-        
+
         '#1f77b4'Blue, '#ff7f0e'Orange, '#2ca02c'Green, '#d62728'Red,
         '#9467bd'Purple, '#8c564b'Brown, '#e377c2'Pink, '#7f7f7f'Grey,
         '#bcbd22'Gold, '#17becf'Cyan
