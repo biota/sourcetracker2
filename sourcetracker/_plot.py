@@ -229,16 +229,19 @@ class ST_graphs:
         your data above are some example codes to use
         """
         prop = self.mpm
+        if not unknowns:
+            prop = prop.drop(['Unknown'], axis=1)
+            prop = prop.div(prop.sum(axis=1), axis=0)
         if flipped:
             prop = prop.T
             y_lab_flip = x_lab
             x_lab_flip = y_lab
             y_lab = y_lab_flip
             x_lab = x_lab_flip
-        if not unknowns:
-            prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
         prop = prop.reset_index()
+        if len(coloring) != (prop.shape[1]-1):
+            coloring = []
         if coloring != []:
             prop.plot(kind='bar', x=prop.columns[0], stacked=True,
                       figsize=((prop.shape[1] * 3 / 4)+4,
