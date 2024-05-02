@@ -225,7 +225,7 @@ def gibbs(table_fp: Table,
         graphs.ST_paired_heatmap(unknowns=unknowns, normalized=transpose,
                                  transpose=transpose)
     if stacked_bar:
-        graphs.ST_Stacked_bar(unknowns=unknowns,coloring=color_list,
+        graphs.ST_Stacked_bar(unknowns=unknowns, coloring=color_list,
                               flipped=flip_bar)
     if diagnostics:
         os.mkdir(output_dir + 'diagnostics')
