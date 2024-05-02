@@ -213,7 +213,10 @@ def gibbs(table_fp: Table,
     mps.to_csv(os.path.join(output_dir, 'mixing_proportions_stds.txt'),
                sep='\t')
     # need to count number of rows here to check for equality
-    color_list = bar_color.split()
+    # add notice if not equal
+    color_list = bar_color.split(",")
+    if len(color_list) != mpm.shape[0]:
+        color_list = ""
     # Plot contributions.
     graphs = ST_graphs(mpm, output_dir, title=title, color=heatmap_color)
     if heatmap:
@@ -222,10 +225,8 @@ def gibbs(table_fp: Table,
         graphs.ST_paired_heatmap(unknowns=unknowns, normalized=transpose,
                                  transpose=transpose)
     if stacked_bar:
-        graphs.ST_Stacked_bar(coloring=color_list, flipped=flip_bar)
-        if not unknowns:
-            graphs.ST_Stacked_bar(unknowns=False, coloring=color_list,
-                                  flipped=flip_bar)
+        graphs.ST_Stacked_bar(unknowns=unknowns,coloring=color_list,
+                              flipped=flip_bar)
     if diagnostics:
         os.mkdir(output_dir + 'diagnostics')
         data = np.load('envcounts.npy', allow_pickle=True)
