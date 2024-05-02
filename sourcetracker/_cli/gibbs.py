@@ -215,8 +215,6 @@ def gibbs(table_fp: Table,
     # need to count number of rows here to check for equality
     # add notice if not equal
     color_list = bar_color.split(",")
-    if len(color_list) != mpm.shape[0]:
-        color_list = ""
     # Plot contributions.
     graphs = ST_graphs(mpm, output_dir, title=title, color=heatmap_color)
     if heatmap:
