@@ -220,8 +220,8 @@ def gibbs(table_fp: Table,
     if heatmap:
         graphs.ST_heatmap(keep_unknowns=keep_unknowns)
     if paired_heatmap:
-        graphs.ST_paired_heatmap(keep_unknowns=keep_unknowns, normalized=transpose,
-                                 transpose=transpose)
+        graphs.ST_paired_heatmap(keep_unknowns=keep_unknowns,
+                                 normalized=transpose, transpose=transpose)
     if stacked_bar:
         graphs.ST_Stacked_bar(keep_unknowns=keep_unknowns, coloring=color_list,
                               flipped=flip_bar)
