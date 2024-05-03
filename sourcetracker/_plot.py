@@ -35,7 +35,7 @@ class ST_graphs:
         self.out_name string
             output name spaces are replaced with _
         """
-    def ST_heatmap(self, unknowns=True, annot=True,
+    def ST_heatmap(self, keep_unknowns=True, annot=True,
                    xlabel='Sources', ylabel='Sinks', vmax=1.0):
         """
         Default Plot for Gibbs method.
@@ -57,7 +57,7 @@ class ST_graphs:
         outputs a heatmap visualization in a PNG
         """
         prop = self.mpm
-        if not unknowns:
+        if not keep_unknowns:
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
         fig, ax = plt.subplots(figsize=((prop.shape[1] * 3 / 4)+4,
@@ -75,7 +75,7 @@ class ST_graphs:
             plt.savefig(os.path.join(self.file,
                                      self.out_name + "_heatmap_nounknown.png"))
 
-    def ST_paired_heatmap(self, normalized=False, unknowns=True,
+    def ST_paired_heatmap(self, normalized=False, keep_unknowns=True,
                           transpose=False, annot=True, ylabel='Sinks',
                           heat_ratio=0.08):
         """
@@ -127,7 +127,7 @@ class ST_graphs:
         given a range of possible known samples.
         """
         prop = self.mpm
-        if not unknowns:
+        if not keep_unknowns:
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
         if normalized:
@@ -186,7 +186,7 @@ class ST_graphs:
             tly = ax.get_yticklabels()
             ax.set_yticklabels(tly, rotation=0)
         if normalized:
-            if unknowns:
+            if keep_unknowns:
                 add_line = tra + "_pairedheatmap_normalized.png"
                 plt.savefig(os.path.join(self.file,
                                          self.out_name + add_line))
@@ -195,7 +195,7 @@ class ST_graphs:
                 plt.savefig(os.path.join(self.file,
                                          self.out_name + add_line))
         else:
-            if unknowns:
+            if keep_unknowns:
                 add_line = tra + "_pairedheatmap.png"
                 plt.savefig(os.path.join(self.file,
                                          self.out_name + add_line))
