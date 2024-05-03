@@ -63,7 +63,7 @@ class ST_graphs:
             fp_suffix = "_heatmap_nounknown.png"
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
-            
+
         fig, ax = plt.subplots(figsize=((prop.shape[1] * 3 / 4)+4,
                                         (prop.shape[0] * 3 / 4)+4))
         sns.heatmap(prop, vmin=0.0, vmax=vmax, cmap=self.color,
