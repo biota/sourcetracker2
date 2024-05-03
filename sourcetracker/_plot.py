@@ -262,18 +262,14 @@ class ST_graphs:
         plt.title(self.title)
         plt.autoscale()
         plt.xticks(rotation=45, ha='right')
-        if unknowns and flipped:
-            plt.savefig(os.path.join(self.file,
-                                     self.out_name + "_flip_stacked_bar.png"))
-        elif unknowns:
-            plt.savefig(os.path.join(self.file,
-                                     self.out_name + "_stacked_bar.png"))
-        else:
-            add_line = "_stacked_bar_nounknowns.png"
-            if flipped:
-                add_line = "flipped_stacked_bar_nounknowns.png"
-            plt.savefig(os.path.join(self.file,
-                                     self.out_name + add_line))
+        fp_suffix = ".png"
+        if not keep_unknowns:
+            fp_suffix = "_no_unknowns" + fp_suffix
+        if flipped:
+            fp_suffix = "_flipped" + fp_suffix
+        fp_suffix = "_stacked_bar" + fp_suffix
+
+        plt.savefig(os.path.join(self.file, self.out_name + fp_suffix))
 
     def ST_bar(self, unknowns=True, x_lab="Sink",
                y_lab="Source Proportion", coloring=[]):
