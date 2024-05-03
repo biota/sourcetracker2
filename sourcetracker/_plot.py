@@ -59,7 +59,7 @@ class ST_graphs:
         prop = self.mpm
         if keep_unknowns:
             fp_suffix = "_heatmap.png"
-       else:
+        else:
             fp_suffix = "_heatmap_nounknown.png"
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
@@ -72,7 +72,7 @@ class ST_graphs:
         ax.set_ylabel(ylabel)
         ax.set_title(self.title)
         plt.xticks(rotation=45, ha='right')
-        
+
         plt.savefig(os.path.join(self.file, self.out_name + fp_suffix))
 
     def ST_paired_heatmap(self, normalized=False, keep_unknowns=True,
