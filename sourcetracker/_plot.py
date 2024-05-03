@@ -78,7 +78,7 @@ class ST_graphs:
                                      self.out_name + "_heatmap_nounknown.png"))
 
     def ST_paired_heatmap(self, normalized=False, unknowns=True,
-                          transpose=False, annot=True, ylabel='Sources',
+                          transpose=False, annot=True, ylabel='Sinks',
                           heat_ratio=0.08):
         """
         Parameters
@@ -162,7 +162,7 @@ class ST_graphs:
                 g[i] = sns.heatmap(prop.iloc[:, i:i+1], vmin=0,
                                    cmap=self.color, cbar=False,
                                    annot=annot, ax=axes[i])
-                g[i].set_xlabel("")
+                g[i].set_xlabel("Sources")
                 g[i].set_ylabel("")
                 g[i].set_yticks([])
                 g[i].set_title(self.title)
