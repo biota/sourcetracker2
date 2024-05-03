@@ -119,6 +119,14 @@ class ST_graphs:
         The reason I do not in this case is that these ranges
         are not particularly helpful to distinguishing the
         successful matches to each other.
+
+        Paired heatmap should be used for assessing overlap in
+        paired individual microbiomes or metabolomic overlap.
+        Some examples of this may include organ donors and
+        recipients, matching animal fecal samples to track
+        movement patterns, overlap in mouse microbiomes
+        caged together, and individual identification
+        given a range of possible known samples.
         """
         prop = self.mpm
         if not unknowns:
