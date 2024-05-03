@@ -7,7 +7,20 @@
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
-
+"""
+Parameters
+----------
+self.file string
+    output directory name given from input
+self.mpm dataframe
+    mixing proportion result from gibbs
+self.title string
+    title
+self.color string
+    color scheme for heatmaps pulled from matplotlib
+self.out_name string
+    output name spaces are replaced with _
+"""
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
@@ -21,20 +34,7 @@ class ST_graphs:
         self.title = title
         self.color = color
         self.out_name = title.replace(" ", "_")
-        """
-        Parameters
-        ----------
-        self.file string
-            output directory name given from input
-        self.mpm dataframe
-            mixing proportion result from gibbs
-        self.title string
-            title
-        self.color string
-            color scheme for heatmaps pulled from matplotlib
-        self.out_name string
-            output name spaces are replaced with _
-        """
+
     def ST_heatmap(self, keep_unknowns=True, annot=True,
                    xlabel='Sources', ylabel='Sinks', vmax=1.0):
         """
