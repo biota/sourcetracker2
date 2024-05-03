@@ -204,7 +204,7 @@ class ST_graphs:
                 plt.savefig(os.path.join(self.file,
                                          self.out_name + add_line))
 
-    def ST_Stacked_bar(self, unknowns=True, x_lab="Sink",
+    def ST_Stacked_bar(self, keep_unknowns=True, x_lab="Sink",
                        y_lab="Source Proportion", coloring=[], flipped=False):
         """
         Creates a Stacked bar plot for the user with direct png save function
@@ -235,7 +235,7 @@ class ST_graphs:
         your data above are some example codes to use
         """
         prop = self.mpm
-        if not unknowns:
+        if not keep_unknowns:
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
         if flipped:
