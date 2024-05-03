@@ -38,9 +38,7 @@ class ST_graphs:
     def ST_heatmap(self, unknowns=True, annot=True,
                    xlabel='Sources', ylabel='Sinks', vmax=1.0):
         """
-        Default Heatmap default is true
-        Standard heat map altered for custom
-        shape and direct png save function
+        Default Plot for Gibbs method.
         Parameters
         ----------
         unknowns bool
