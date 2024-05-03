@@ -116,8 +116,8 @@ DESC_TTL = ('Title input. String format')
 DESC_HCOL = ('Heatmap coloring. Coloring pattern for default and'
              ' paired heatmap. Default is viridis, other options in'
              ' plot.py.')
-DESC_UKN = ('Remove unknowns from heatmap or stacked bar plots.'
-            'Will redistribute value proportionally to each column.')
+DESC_UKN = ('keep unknown sources in heatmap or stacked bar plots.'
+            'IMPORTANT: Setting to False will normalize proportions back to 1.')
 DESC_TRA = ('Transpose Heatmap plots.Flips x and y axis. Default is'
             ' False.')
 DESC_BCOL = ('Coloring for stacked bar plot. Default is matplotlib'
