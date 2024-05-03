@@ -57,9 +57,13 @@ class ST_graphs:
         outputs a heatmap visualization in a PNG
         """
         prop = self.mpm
-        if not keep_unknowns:
+        if keep_unknowns:
+            fp_suffix = "_heatmap.png"
+       else:
+            fp_suffix = "_heatmap_nounknown.png"
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
+            
         fig, ax = plt.subplots(figsize=((prop.shape[1] * 3 / 4)+4,
                                         (prop.shape[0] * 3 / 4)+4))
         sns.heatmap(prop, vmin=0.0, vmax=vmax, cmap=self.color,
@@ -68,12 +72,8 @@ class ST_graphs:
         ax.set_ylabel(ylabel)
         ax.set_title(self.title)
         plt.xticks(rotation=45, ha='right')
-        if keep_unknowns:
-            plt.savefig(os.path.join(self.file,
-                                     self.out_name + "_heatmap.png"))
-        else:
-            plt.savefig(os.path.join(self.file,
-                                     self.out_name + "_heatmap_nounknown.png"))
+        
+        plt.savefig(os.path.join(self.file, self.out_name + fp_suffix))
 
     def ST_paired_heatmap(self, normalized=False, keep_unknowns=True,
                           transpose=False, annot=True, ylabel='Sinks',
