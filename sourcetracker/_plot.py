@@ -68,7 +68,7 @@ class ST_graphs:
         ax.set_ylabel(ylabel)
         ax.set_title(self.title)
         plt.xticks(rotation=45, ha='right')
-        if unknowns:
+        if keep_unknowns:
             plt.savefig(os.path.join(self.file,
                                      self.out_name + "_heatmap.png"))
         else:
