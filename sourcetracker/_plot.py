@@ -188,21 +188,14 @@ class ST_graphs:
         if normalized:
             if keep_unknowns:
                 add_line = tra + "_pairedheatmap_normalized.png"
-                plt.savefig(os.path.join(self.file,
-                                         self.out_name + add_line))
             else:
                 add_line = tra + "_pairedheatmap_nounknown_normalized.png"
-                plt.savefig(os.path.join(self.file,
-                                         self.out_name + add_line))
         else:
             if keep_unknowns:
                 add_line = tra + "_pairedheatmap.png"
-                plt.savefig(os.path.join(self.file,
-                                         self.out_name + add_line))
             else:
                 add_line = tra + "_pairedheatmap_nounknowns.png"
-                plt.savefig(os.path.join(self.file,
-                                         self.out_name + add_line))
+        plt.savefig(os.path.join(self.file, self.out_name + add_line))
 
     def ST_Stacked_bar(self, keep_unknowns=True, x_lab="Sink",
                        y_lab="Source Proportion", coloring=[], flipped=False):
