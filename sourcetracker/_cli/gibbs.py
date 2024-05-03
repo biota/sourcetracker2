@@ -138,7 +138,7 @@ from sourcetracker._gibbs_defaults import (DEFAULT_ALPH1, DEFAULT_ALPH2,
               type=click.STRING, show_default=True, help=DESC_TTL)
 @click.option('--heatmap_color', required=False, default='viridis',
               type=click.STRING, show_default=True, help=DESC_HCOL)
-@click.option('--unknowns', required=False, default=True, is_flag=True,
+@click.option('--keep_unknowns', required=False, default=True, is_flag=True,
               show_default=True, help=DESC_UKN)
 @click.option('--transpose', required=False, default=False, is_flag=True,
               show_default=True, help=DESC_TRA)
@@ -173,7 +173,7 @@ def gibbs(table_fp: Table,
           paired_heatmap: bool,
           title: str,
           heatmap_color: str,
-          unknowns: bool,
+          keep_unknowns: bool,
           transpose: bool,
           bar_color: str,
           flip_bar: bool):
@@ -218,12 +218,12 @@ def gibbs(table_fp: Table,
     # Plot contributions.
     graphs = ST_graphs(mpm, output_dir, title=title, color=heatmap_color)
     if heatmap:
-        graphs.ST_heatmap(unknowns=unknowns)
+        graphs.ST_heatmap(keep_unknowns=keep_unknowns)
     if paired_heatmap:
-        graphs.ST_paired_heatmap(unknowns=unknowns, normalized=transpose,
+        graphs.ST_paired_heatmap(keep_unknowns=keep_unknowns, normalized=transpose,
                                  transpose=transpose)
     if stacked_bar:
-        graphs.ST_Stacked_bar(unknowns=unknowns, coloring=color_list,
+        graphs.ST_Stacked_bar(keep_unknowns=keep_unknowns, coloring=color_list,
                               flipped=flip_bar)
     if diagnostics:
         os.mkdir(output_dir + 'diagnostics')
