@@ -241,7 +241,7 @@ class ST_graphs:
         prop = prop.reset_index()
         if len(coloring) != (prop.shape[1]-1):
             coloring = []
-        if coloring = []:
+        if coloring == []:
             coloring = None
         prop.plot(kind='bar', x=prop.columns[0], stacked=True,
                      figsize=((prop.shape[1] * 3 / 4)+4,
