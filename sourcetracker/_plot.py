@@ -244,9 +244,9 @@ class ST_graphs:
         if coloring == []:
             coloring = None
         prop.plot(kind='bar', x=prop.columns[0], stacked=True,
-                     figsize=((prop.shape[1] * 3 / 4)+4,
-                     (prop.shape[0] * 3 / 4)+4),
-                     color=coloring)
+                  figsize=((prop.shape[1] * 3 / 4)+4,
+                           (prop.shape[0] * 3 / 4)+4),
+                  color=coloring)
         plt.xlabel(x_lab)
         plt.ylabel(y_lab)
         plt.title(self.title)
