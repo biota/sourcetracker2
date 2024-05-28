@@ -73,7 +73,8 @@ class ST_graphs:
         ax.set_title(self.title)
         plt.xticks(rotation=45, ha='right')
 
-        plt.savefig(os.path.join(self.file, self.out_name + fp_suffix))
+        plt.savefig(os.path.join(self.file, self.out_name + fp_suffix),
+                    bbox_inches="tight")
 
     def ST_paired_heatmap(self, normalized=False, keep_unknowns=True,
                           transpose=False, annot=True, ylabel='Sinks',
@@ -195,7 +196,8 @@ class ST_graphs:
                 add_line = tra + "_pairedheatmap.png"
             else:
                 add_line = tra + "_pairedheatmap_nounknowns.png"
-        plt.savefig(os.path.join(self.file, self.out_name + add_line))
+        plt.savefig(os.path.join(self.file, self.out_name + add_line),
+                    bbox_inches="tight")
 
     def ST_Stacked_bar(self, keep_unknowns=True, x_lab="Sink",
                        y_lab="Source Proportion", coloring=[], flipped=False):
@@ -259,4 +261,5 @@ class ST_graphs:
             fp_suffix = "_flipped" + fp_suffix
         fp_suffix = "_stacked_bar" + fp_suffix
 
-        plt.savefig(os.path.join(self.file, self.out_name + fp_suffix))
+        plt.savefig(os.path.join(self.file, self.out_name + fp_suffix),
+                    bbox_inches="tight")
