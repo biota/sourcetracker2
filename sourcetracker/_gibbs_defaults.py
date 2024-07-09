@@ -112,6 +112,7 @@ DESC_PHTM = ('Activates Paired heatmap visualization. Paired'
              'This can be used for groupings such as convergent '
              'microbiomes or organ transfer similarities as a few'
              ' examples.')
+DESC_PLEG = ('Toggles off Legend for Paired Heatmap.')
 DESC_TTL = ('Title input. String format')
 DESC_HCOL = ('Heatmap coloring. Coloring pattern for default and'
              ' paired heatmap. Default is viridis, other options in'
