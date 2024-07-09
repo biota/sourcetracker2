@@ -78,7 +78,7 @@ class ST_graphs:
 
     def ST_paired_heatmap(self, normalized=False, keep_unknowns=True,
                           transpose=False, annot=True, ylabel='Sinks',
-                          heat_ratio=0.08):
+                          heat_ratio=0.08, legend=True):
         """
         Parameters
         ----------
@@ -166,10 +166,15 @@ class ST_graphs:
                 g[i].set_yticks([])
                 g[i].set_title(self.title)
             elif i == len(prop.columns) - 1:
-                g[i] = sns.heatmap(prop.iloc[:, i:i + 1], vmin=0,
-                                   cmap=self.color, annot=annot,
-                                   ax=axes[i],
-                                   cbar_ax=axes[i + 1])
+                if legend:
+                    g[i] = sns.heatmap(prop.iloc[:, i:i + 1], vmin=0,
+                                       cmap=self.color, annot=annot,
+                                       ax=axes[i],
+                                       cbar_ax=axes[i + 1])
+                else:
+                    g[i] = sns.heatmap(prop.iloc[:, i:i + 1], vmin=0,
+                                       cmap=self.color, annot=annot,
+                                       ax=axes[i])
                 g[i].set_xlabel("")
                 g[i].set_ylabel("")
                 g[i].set_yticks([])
