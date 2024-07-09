@@ -54,13 +54,13 @@ class ST_graphs:
         returns
         --------
         none
-        outputs a heatmap visualization in a PNG
+        outputs a heatmap visualization in a SVG
         """
         prop = self.mpm
         if keep_unknowns:
-            fp_suffix = "_heatmap.png"
+            fp_suffix = "_heatmap.svg"
         else:
-            fp_suffix = "_heatmap_nounknown.png"
+            fp_suffix = "_heatmap_nounknown.svg"
             prop = prop.drop(['Unknown'], axis=1)
             prop = prop.div(prop.sum(axis=1), axis=0)
 
@@ -100,7 +100,7 @@ class ST_graphs:
         returns
         --------
         none
-        outputs a heatmap visualization in a PNG defined by each
+        outputs a heatmap visualization in a svg defined by each
         individual column
 
         Any analysis should be done using a bin(n,x)
@@ -193,21 +193,21 @@ class ST_graphs:
             ax.set_yticklabels(tly, rotation=0)
         if normalized:
             if keep_unknowns:
-                add_line = tra + "_pairedheatmap_normalized.png"
+                add_line = tra + "_pairedheatmap_normalized.svg"
             else:
-                add_line = tra + "_pairedheatmap_nounknown_normalized.png"
+                add_line = tra + "_pairedheatmap_nounknown_normalized.svg"
         else:
             if keep_unknowns:
-                add_line = tra + "_pairedheatmap.png"
+                add_line = tra + "_pairedheatmap.svg"
             else:
-                add_line = tra + "_pairedheatmap_nounknowns.png"
+                add_line = tra + "_pairedheatmap_nounknowns.svg"
         plt.savefig(os.path.join(self.file, self.out_name + add_line),
                     bbox_inches="tight")
 
     def ST_Stacked_bar(self, keep_unknowns=True, x_lab="Sink",
                        y_lab="Source Proportion", coloring=[], flipped=False):
         """
-        Creates a Stacked bar plot for the user with direct png save function
+        Creates a Stacked bar plot for the user with direct svg save function
         Parameters
         ----------
         unknowns bool
@@ -224,7 +224,7 @@ class ST_graphs:
         returns
         --------
         none
-        outputs a stacked bar visualization in a PNG
+        outputs a stacked bar visualization in a SVG
 
         color example list
 
@@ -259,7 +259,7 @@ class ST_graphs:
         plt.title(self.title)
         plt.autoscale()
         plt.xticks(rotation=45, ha='right')
-        fp_suffix = ".png"
+        fp_suffix = ".svg"
         if not keep_unknowns:
             fp_suffix = "_no_unknowns" + fp_suffix
         if flipped:
