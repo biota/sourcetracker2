@@ -130,9 +130,11 @@ from sourcetracker._gibbs_defaults import (DEFAULT_ALPH1, DEFAULT_ALPH2,
 # (added options for graphical ouput and varying stats functions)
 @click.option('--stacked_bar', required=False, default=False, is_flag=True,
               show_default=True, help=DESC_STBAR)
-@click.option('--heatmap', required=False, default=True, is_flag=True,
+@click.option('--no_heatmap', required=False, default=True, is_flag=True,
               show_default=True, help=DESC_HTM)
 @click.option('--paired_heatmap', required=False, default=False, is_flag=True,
+              show_default=True, help=DESC_PHTM)
+@click.option('--paired_legend', required=False, default=True, is_flag=True,
               show_default=True, help=DESC_PHTM)
 @click.option('--title', required=False, default='Mixing Proportions',
               type=click.STRING, show_default=True, help=DESC_TTL)
@@ -169,8 +171,9 @@ def gibbs(table_fp: Table,
           diagnostics: bool,
           limit: float,
           stacked_bar: bool,
-          heatmap: bool,
+          no_heatmap: bool,
           paired_heatmap: bool,
+          paired_legend: bool,
           title: str,
           heatmap_color: str,
           keep_unknowns: bool,
@@ -217,11 +220,12 @@ def gibbs(table_fp: Table,
     color_list = bar_color.split(",")
     # Plot contributions.
     graphs = ST_graphs(mpm, output_dir, title=title, color=heatmap_color)
-    if heatmap:
+    if no_heatmap:
         graphs.ST_heatmap(keep_unknowns=keep_unknowns)
     if paired_heatmap:
         graphs.ST_paired_heatmap(keep_unknowns=keep_unknowns,
-                                 normalized=transpose, transpose=transpose)
+                                 normalized=transpose, transpose=transpose,
+                                 legend=paired_legend)
     if stacked_bar:
         graphs.ST_Stacked_bar(keep_unknowns=keep_unknowns, coloring=color_list,
                               flipped=flip_bar)
