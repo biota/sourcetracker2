@@ -33,7 +33,7 @@ from sourcetracker._gibbs_defaults import (DESC_TBL, DESC_MAP, DESC_OUT,
                                            DESC_LIM, DESC_STBAR, DESC_HTM,
                                            DESC_PHTM, DESC_TTL, DESC_HCOL,
                                            DESC_UKN, DESC_TRA, DESC_BCOL,
-                                           DESC_FLBR)
+                                           DESC_FLBR, DESC_PLEG)
 
 # import default values
 from sourcetracker._gibbs_defaults import (DEFAULT_ALPH1, DEFAULT_ALPH2,
@@ -135,7 +135,7 @@ from sourcetracker._gibbs_defaults import (DEFAULT_ALPH1, DEFAULT_ALPH2,
 @click.option('--paired_heatmap', required=False, default=False, is_flag=True,
               show_default=True, help=DESC_PHTM)
 @click.option('--paired_legend', required=False, default=True, is_flag=True,
-              show_default=True, help=DESC_PHTM)
+              show_default=True, help=DESC_PLEG)
 @click.option('--title', required=False, default='Mixing Proportions',
               type=click.STRING, show_default=True, help=DESC_TTL)
 @click.option('--heatmap_color', required=False, default='viridis',
